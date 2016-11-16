@@ -7,6 +7,7 @@
 //
 
 #import "YQLoadingView.h"
+#import "YQLoadingViewResourceManager.h"
 
 static const NSTimeInterval delayTime = 1.0;
 static const NSTimeInterval kAlertShowTime = 0.8;
@@ -29,7 +30,7 @@ static const NSTimeInterval kAlertShowTime = 0.8;
 - (UIImageView *)successView
 {
     if (!_successView) {
-        _successView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_loading_success"]];
+        _successView = [[UIImageView alloc] initWithImage:[YQLoadingViewResourceManager successImage]];
     }
     return _successView;
 }
@@ -37,7 +38,7 @@ static const NSTimeInterval kAlertShowTime = 0.8;
 - (UIImageView *)failView
 {
     if (!_failView) {
-        _failView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_loading_error"]];
+        _failView = [[UIImageView alloc] initWithImage:[YQLoadingViewResourceManager errorImage]];
     }
     return _failView;
 }
@@ -123,8 +124,9 @@ static const NSTimeInterval kAlertShowTime = 0.8;
         }else{
             [self.viewController.view addSubview:self];
         }
-        [self show:YES];
     }
+    
+    [self show:YES];
 }
 
 - (void)hideAnimaition
