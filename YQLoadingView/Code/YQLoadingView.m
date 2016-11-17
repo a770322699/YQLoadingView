@@ -25,12 +25,13 @@ static const NSTimeInterval kAlertShowTime = 0.8;
 
 @implementation YQLoadingView
 @synthesize successView = _successView, failView = _failView;
+@synthesize successIcon = _successIcon, failIcon = _failIcon;
 
 #pragma mark - get and set
 - (UIImageView *)successView
 {
     if (!_successView) {
-        _successView = [[UIImageView alloc] initWithImage:[YQLoadingViewResourceManager successImage]];
+        _successView = [[UIImageView alloc] initWithImage:self.successIcon];
     }
     return _successView;
 }
@@ -38,11 +39,35 @@ static const NSTimeInterval kAlertShowTime = 0.8;
 - (UIImageView *)failView
 {
     if (!_failView) {
-        _failView = [[UIImageView alloc] initWithImage:[YQLoadingViewResourceManager errorImage]];
+        _failView = [[UIImageView alloc] initWithImage:self.failIcon];
     }
     return _failView;
 }
 
+- (UIImage *)successIcon{
+    if (!_successIcon) {
+        _successIcon = [YQLoadingViewResourceManager successImage];
+    }
+    return _successIcon;
+}
+
+- (UIImage *)failIcon{
+    if (!_failIcon) {
+        _failIcon = [YQLoadingViewResourceManager errorImage];
+    }
+    return _failIcon;
+}
+
+#pragma mark - setting
+- (void)setSuccessIcon:(UIImage *)successIcon{
+    _successIcon = successIcon;
+    self.successView.image = successIcon;
+}
+
+- (void)setFailIcon:(UIImage *)failIcon{
+    _failIcon = failIcon;
+    self.failView.image = failIcon;
+}
 
 #pragma mark - public
 - (void)showFail:(NSString *)message
