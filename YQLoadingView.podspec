@@ -12,14 +12,19 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/a770322699/YQLoadingView.git", :tag => "#{s.version}" }
   s.requires_arc = true
 
-  s.subspec 'Code' do |code|
-    code.source_files = "YQLoadingView/Code/*"
-    code.public_header_files = "YQLoadingView/Code/*.h"
-    code.frameworks = "UIKit", "Foundation", "CoreGraphics"
-  end
+  s.frameworks = "UIKit", "Foundation", "CoreGraphics"
 
   s.subspec 'Resources' do |resources|
     resources.source_files = "YQLoadingView/Resources/*"
+#resources.public_header_files = "YQLoadingView/Resources/*.h"
   end
+
+  s.subspec 'Code' do |code|
+    code.source_files = "YQLoadingView/Code/*"
+    code.public_header_files = "YQLoadingView/Code/*.h"
+    code.dependency "YQLoadingView/Resources"
+  end
+
+
 
 end
