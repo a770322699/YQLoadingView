@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YQLoadingView"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "基于MBHUD封装的一个加载器。"
   s.homepage     = "https://github.com/a770322699/YQLoadingView"
   s.license      = "MIT"
@@ -12,11 +12,12 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/a770322699/YQLoadingView.git", :tag => "#{s.version}" }
   s.requires_arc = true
 
+  s.resource = "YQLoadingView/Resources/YQLoadingView.bundle"
   s.frameworks = "UIKit", "Foundation", "CoreGraphics"
 
   s.subspec 'Resources' do |resources|
     resources.source_files = "YQLoadingView/Resources/*.{h,m}"
-    resources.resource = "YQLoadingView/Resources/YQLoadingView.bundle"
+#resources.resource = "YQLoadingView/Resources/YQLoadingView.bundle"
 #resources.public_header_files = "YQLoadingView/Resources/*.h"
   end
 
